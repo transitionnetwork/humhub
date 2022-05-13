@@ -10,6 +10,7 @@ namespace humhub\modules\user\widgets;
 use humhub\components\Widget;
 use humhub\modules\user\models\ProfileField;
 use humhub\modules\user\models\User;
+use humhub\libs\StringHelper;
 
 /**
  * PeopleDetails shows details for back side of the people card
@@ -84,7 +85,7 @@ class PeopleDetails extends Widget
             return false;
         }
 
-        return $profileFields[$internalName]->getUserValue($this->user, false);
+        return StringHelper::truncate(profileFields[$internalName]->getUserValue($this->user, false), 200, '...', true);
     }
 
 }
